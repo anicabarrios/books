@@ -1,0 +1,191 @@
+.hero {
+  display: grid;
+  align-items: center;
+  gap: clamp(40px, 6vw, 64px);
+  padding-top: clamp(8px, 2vw, 24px);
+  padding-bottom: clamp(64px, 9vw, 104px);
+}
+
+@media (min-width: 900px) {
+  .hero {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  }
+}
+
+.hero__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+  min-width: 0;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 1.5rem + 3.6vw, 4rem);
+  font-weight: 800;
+  line-height: 1.04;
+}
+
+/* Hand-lettered: every word sits at its own slight angle */
+.wobble__word {
+  display: inline-block;
+}
+
+.wobble__word:nth-of-type(3n + 1) {
+  rotate: -1.6deg;
+}
+
+.wobble__word:nth-of-type(3n + 2) {
+  rotate: 1.2deg;
+  translate: 0 -0.03em;
+}
+
+.wobble__word:nth-of-type(3n) {
+  rotate: -0.5deg;
+}
+
+.hero__lead {
+  max-width: 34em;
+  font-size: clamp(1.1rem, 1rem + 0.5vw, 1.3rem);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 4px;
+}
+
+.hero__meta {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+@media (max-width: 480px) {
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+    align-self: stretch;
+  }
+}
+
+/* ---------- The shelf ----------
+   Everything is placed with percentages of the shelf's own size, so it scales as one picture. */
+.hero__art {
+  min-width: 0;
+}
+
+.shelf {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  margin-inline: auto;
+  aspect-ratio: 560 / 520;
+}
+
+.shelf__plank {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 9%;
+  z-index: 4;
+  height: 7.5%;
+  border-radius: 14px;
+  background: linear-gradient(#ecbf8e, #deaa72);
+  box-shadow: 0 8px 0 #c99560;
+}
+
+.shelf__book {
+  --tilt: -5deg;
+  position: absolute;
+  bottom: 15%;
+  z-index: 2;
+  display: block;
+  width: 45%;
+  transform-origin: 50% 100%;
+  rotate: var(--tilt);
+  animation: shelf-in 0.7s cubic-bezier(0.2, 0.9, 0.3, 1.15) backwards;
+}
+
+.shelf__book--left {
+  --tilt: -5deg;
+  left: 2%;
+}
+
+.shelf__book--right {
+  --tilt: 4deg;
+  right: 2%;
+  z-index: 3;
+  animation-delay: 0.14s;
+}
+
+.shelf__book .cover {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 5px 10px 10px 5px;
+  box-shadow: 0 0 0 1px rgb(38 49 79 / 0.1), 0 22px 30px -14px rgb(38 49 79 / 0.55);
+  background: var(--paper);
+}
+
+/* The puppy and the bear sit behind the books, so only their heads show over the top */
+.shelf__pal {
+  position: absolute;
+  z-index: 1;
+  width: 29%;
+  height: auto;
+  animation: pal-pop 0.55s cubic-bezier(0.2, 0.9, 0.3, 1.3) 0.55s backwards;
+}
+
+.shelf__pal--puppy {
+  left: 10%;
+  top: 2%;
+  rotate: -9deg;
+}
+
+.shelf__pal--bear {
+  right: 9%;
+  top: 3%;
+  rotate: 8deg;
+  animation-delay: 0.7s;
+}
+
+.shelf__crayon {
+  position: absolute;
+  bottom: 13.5%;
+  z-index: 5;
+  width: 15%;
+  height: 3.8%;
+  border-radius: 3px 999px 999px 3px;
+}
+
+.shelf__star {
+  position: absolute;
+  z-index: 5;
+  height: auto;
+  animation: pal-pop 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.3) backwards;
+}
+
+@keyframes shelf-in {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.94);
+  }
+}
+
+@keyframes pal-pop {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.6);
+  }
+}
+
+@media (hover: hover) {
+  .shelf__book {
+    transition: translate 0.2s ease;
+  }
+
+  .shelf__book:hover {
+    translate: 0 -10px;
+  }
+}

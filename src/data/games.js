@@ -13,36 +13,40 @@ function withAnswerAt(answer, wrongOnes, position) {
   return options
 }
 
+// The two wrong answers for round `i` come from other items in the same list.
+const wrongFrom = (list, i, pick) => [list[(i + 1) % list.length], list[(i + 3) % list.length]].map(pick)
+
 // Rounds are not random: round n always looks the same, so nothing flickers on re-render.
-export function buildRound(gameId, n) {
-  if (gameId === 'words') {
-    const count = WORDS.length
-    const i = n % count
-    const word = WORDS[i]
-    const wrongOnes = [WORDS[(i + 1) % count].sr, WORDS[(i + 3) % count].sr]
+// A round is { label, prompt, options, optionLang, answer, right, wrong }.
+const BUILDERS = {
+  words(n) {
+    const word = WORDS[n % WORDS.length]
     const meaning = `${word.sr} (say it: ${word.say}) means ${word.en.toLowerCase()}.`
 
     return {
       label: 'Word match',
-      prompt: `Which word goes with "${word.en}"?`,
-      options: withAnswerAt(word.sr, wrongOnes, n % 3),
+      prompt: `Which word goes with “${word.en}”?`,
+      options: withAnswerAt(word.sr, wrongFrom(WORDS, n % WORDS.length, (w) => w.sr), n % 3),
+      optionLang: 'sr-Latn', // the answers are Serbian words
       answer: word.sr,
       right: `Yes! ${meaning}`,
       wrong: `Not quite. ${meaning}`,
     }
-  }
+  },
 
-  const count = HOLIDAYS.length
-  const i = n % count
-  const holiday = HOLIDAYS[i]
-  const wrongOnes = [HOLIDAYS[(i + 1) % count].name, HOLIDAYS[(i + 3) % count].name]
+  holidays(n) {
+    const holiday = HOLIDAYS[n % HOLIDAYS.length]
 
-  return {
-    label: 'Which holiday?',
-    prompt: holiday.clue,
-    options: withAnswerAt(holiday.name, wrongOnes, n % 3),
-    answer: holiday.name,
-    right: `Yes! It's ${holiday.name}, on ${holiday.when}.`,
-    wrong: `Not quite. It's ${holiday.name}, on ${holiday.when}.`,
-  }
+    return {
+      label: 'Which holiday?',
+      prompt: holiday.clue,
+      options: withAnswerAt(holiday.name, wrongFrom(HOLIDAYS, n % HOLIDAYS.length, (h) => h.name), n % 3),
+      optionLang: undefined,
+      answer: holiday.name,
+      right: `Yes! It's ${holiday.name}, on ${holiday.when}.`,
+      wrong: `Not quite. It's ${holiday.name}, on ${holiday.when}.`,
+    }
+  },
 }
+
+export const buildRound = (gameId, n) => BUILDERS[gameId](n)

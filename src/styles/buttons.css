@@ -1,0 +1,79 @@
+/* Chunky sticker buttons: a flat color and a darker edge underneath that squashes when pressed. */
+.btn {
+  --edge: rgb(38 49 79 / 0.22);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  min-height: 48px; /* comfortable tap target */
+  max-width: 100%;
+  padding: 0.55em 1.4em;
+  border: var(--stroke) solid transparent; /* same size for every kind of button */
+  border-radius: 999px;
+  background: var(--paper);
+  box-shadow: 0 4px 0 var(--edge);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: translate 0.12s ease, box-shadow 0.12s ease;
+}
+
+.btn:active {
+  translate: 0 3px;
+  box-shadow: 0 1px 0 var(--edge);
+}
+
+.btn--primary {
+  --edge: var(--coral-edge);
+  background: var(--coral);
+  color: #fff;
+}
+
+.btn--ghost {
+  --edge: rgb(38 49 79 / 0.14);
+  border-color: var(--line-strong);
+  background: var(--paper);
+}
+
+.btn--butter {
+  --edge: var(--butter-edge);
+  background: var(--butter);
+}
+
+/* For the dark band: a white outline, since a shadow would not show on dark blue */
+.btn--light {
+  background: transparent;
+  border-color: #fff;
+  color: #fff;
+  --edge: rgb(255 255 255 / 0.35);
+}
+
+.btn--sm {
+  min-height: 44px;
+  font-size: 1rem;
+  padding: 0.45em 1.15em;
+}
+
+.btn--lg {
+  min-height: 56px;
+  font-size: 1.1875rem;
+  padding: 0.65em 1.6em;
+}
+
+/* Lift on hover only where there is a real hover (not on touch screens, where it would stick) */
+@media (hover: hover) {
+  .btn:hover {
+    translate: 0 -2px;
+    box-shadow: 0 6px 0 var(--edge);
+  }
+
+  .btn:active {
+    translate: 0 3px;
+    box-shadow: 0 1px 0 var(--edge);
+  }
+}

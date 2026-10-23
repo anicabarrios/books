@@ -1,8 +1,20 @@
+import { cover } from '../lib/cover.js'
 
+// Amazon links (amazon.com, US market). Every button on the site reads from here.
 export const AMAZON = {
   cuteAnimals: 'https://www.amazon.com/dp/B0HMFKKKR3',
   learnSerbian: 'https://www.amazon.com/dp/B0HMFMV1XJ',
 }
+
+// To add a book, add one more object here. The hero, the book list, the buttons at the bottom,
+// the search-engine data and the "ideas to go with it" links all update by themselves.
+//
+//   id          used in links: (book:cute-animals) in blog posts, and `book:` in a post's front matter
+//   ages        written like 'Ages 3–6'. The site reads the numbers from it.
+//   tone        card color: 'sky' or 'butter'
+//   character   the little drawing used when there is no cover: 'puppy' or 'bear'
+//   languages   what the book is written in ('sr' is Serbian)
+//   cover       cover('file_name_without_extension', widthInPixels, heightInPixels), or null
 export const BOOKS = [
   {
     id: 'cute-animals',
@@ -13,7 +25,8 @@ export const BOOKS = [
     href: AMAZON.cuteAnimals,
     tone: 'sky',
     character: 'puppy',
-    cover: '/covers/cute_puppies.jpg',
+    languages: ['en'],
+    cover: cover('cute_puppies', 1000, 1293),
   },
   {
     id: 'learn-serbian',
@@ -24,10 +37,13 @@ export const BOOKS = [
     href: AMAZON.learnSerbian,
     tone: 'butter',
     character: 'bear',
-    cover: '/covers/learn_serbian.jpg',
+    languages: ['en', 'sr'],
+    cover: cover('learn_serbian', 1000, 1293),
   },
 ]
 
+// Words for the "Word match" game (Explore section, Games tab).
+// Holidays live in src/data/holidays.js. Blog posts live in content/blog/*.md.
 export const WORDS = [
   { en: 'Dog', sr: 'pas', say: 'pahs' },
   { en: 'Cat', sr: 'mačka', say: 'MAHCH-kah' },

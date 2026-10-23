@@ -74,22 +74,16 @@ export function Pumpkin({ className }) {
       <circle cx="122" cy="112" r="7" fill="#26314F" />
       <circle cx="80" cy="110" r="2" fill="#FFFFFF" />
       <circle cx="124" cy="110" r="2" fill="#FFFFFF" />
-      <path
-        d="M76 138 q24 26 48 0"
-        fill="none"
-        stroke="#26314F"
-        strokeWidth="4"
-        strokeLinecap="round"
-      />
+      <path d="M76 138 q24 26 48 0" fill="none" stroke="#26314F" strokeWidth="4" strokeLinecap="round" />
       <ellipse cx="64" cy="132" rx="9" ry="6" fill="#FF8A8A" opacity="0.6" />
       <ellipse cx="136" cy="132" rx="9" ry="6" fill="#FF8A8A" opacity="0.6" />
     </svg>
   )
 }
 
-export function Crayons() {
+export function Crayons({ className = '' }) {
   return (
-    <div className="crayons" aria-hidden="true">
+    <div className={`crayons ${className}`.trim()} aria-hidden="true">
       <span style={{ left: 8, top: 22, background: '#FF8F7A', transform: 'rotate(-14deg)' }} />
       <span style={{ left: 24, top: 58, background: '#7FB7F5', transform: 'rotate(4deg)' }} />
       <span style={{ left: 12, top: 92, background: '#8FD6AE', transform: 'rotate(-6deg)' }} />
@@ -97,6 +91,7 @@ export function Crayons() {
   )
 }
 
+// A post's `art:` value in its front matter, or a book's `character`, picks one of these.
 export const CHARACTERS = {
   puppy: Puppy,
   bear: Bear,

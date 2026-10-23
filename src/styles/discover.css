@@ -1,0 +1,222 @@
+/* ---------- Play a little, learn a little ---------- */
+.discover {
+  padding-top: var(--section-y);
+  padding-bottom: var(--section-y);
+}
+
+.discover__box {
+  display: grid;
+  align-items: center;
+  gap: clamp(32px, 5vw, 56px);
+  padding: clamp(28px, 5vw, 56px);
+  border-radius: calc(var(--radius) + 8px);
+  background: var(--lilac);
+}
+
+@media (min-width: 880px) {
+  .discover__box {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+  }
+}
+
+.discover__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  min-width: 0;
+}
+
+.discover__copy h2 {
+  font-size: clamp(2rem, 1.4rem + 2.2vw, 2.9rem);
+}
+
+.discover__result {
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+}
+
+/* ---------- Tabs and chips ---------- */
+.tabs {
+  display: inline-flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 28px;
+  background: rgb(255 255 255 / 0.7);
+}
+
+.tab,
+.chip {
+  min-height: 44px;
+  padding: 8px 20px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 650;
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip {
+  background: var(--paper);
+}
+
+.tab[aria-pressed='true'],
+.chip[aria-pressed='true'] {
+  background: var(--ink);
+  color: #fff;
+}
+
+@media (hover: hover) {
+  .tab:not([aria-pressed='true']):hover,
+  .chip:not([aria-pressed='true']):hover {
+    background: var(--butter);
+  }
+}
+
+@media (max-width: 480px) {
+  .tabs {
+    display: flex;
+    width: 100%;
+  }
+
+  .tab {
+    flex: 1 1 auto;
+    padding: 8px 12px;
+    font-size: 1rem;
+  }
+}
+
+/* ---------- The card on the right ---------- */
+.word-card {
+  --fill: var(--paper);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  max-width: 400px;
+  padding: clamp(28px, 4vw, 38px) clamp(18px, 4vw, 32px);
+  border-radius: 32px;
+  text-align: center;
+}
+
+.word-card__label {
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.word-card__name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 7vw, 2.7rem);
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+/* The slot keeps its height before the countdown shows up, so nothing jumps */
+.word-card__when-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+}
+
+.word-card__when {
+  padding: 3px 14px;
+  border-radius: 999px;
+  background: var(--lilac);
+  color: var(--lilac-ink);
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+
+.word-card__date {
+  font-weight: 800;
+  color: var(--muted);
+}
+
+.word-card__text {
+  margin-top: 8px;
+}
+
+/* ---------- The games ---------- */
+.game__prompt {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.25rem, 4.5vw, 1.5rem);
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.game__options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.option {
+  min-height: 52px;
+  padding: 10px 20px;
+  border: var(--stroke) solid var(--line);
+  border-radius: 18px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 650;
+  font-size: clamp(1.15rem, 4.5vw, 1.25rem);
+  cursor: pointer;
+}
+
+.option:disabled {
+  cursor: default;
+}
+
+@media (hover: hover) {
+  .option:not(:disabled):hover {
+    background: var(--butter-soft);
+  }
+}
+
+.option--right {
+  border-color: var(--leaf);
+  background: var(--leaf-soft);
+  animation: option-pop 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.4);
+}
+
+.option--wrong {
+  border-color: var(--coral);
+  background: var(--coral-soft);
+}
+
+@keyframes option-pop {
+  50% {
+    transform: scale(1.04) rotate(-1deg);
+  }
+}
+
+.game__feedback {
+  min-height: 3.4em;
+  margin-top: 6px;
+  font-size: 1.05rem;
+}
+
+.game__score {
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--muted);
+}

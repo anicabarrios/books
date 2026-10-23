@@ -56,3 +56,43 @@ export function ExternalIcon() {
     </svg>
   )
 }
+
+// Hamburger and close icon in one drawing. The CSS shows the right one by watching the button's
+// aria-expanded value, so no JavaScript has to swap them (see styles/header.css).
+export function MenuIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        className="menu-icon__open"
+        d="M4 7 h16 M4 12 h16 M4 17 h16"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+      />
+      <path
+        className="menu-icon__close"
+        d="M6 6 L18 18 M18 6 L6 18"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+      />
+    </svg>
+  )
+}
+
+export function ArrowIcon() {
+  return (
+    <svg className="icon-arrow" viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M4 12 h15 M13 6 l6 6 -6 6"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}

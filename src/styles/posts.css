@@ -1,0 +1,162 @@
+/* ---------- Blog post cards (home page, blog list, "more from the blog") ---------- */
+.blog-list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(32px, 4vw, 44px);
+}
+
+.blog-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: clamp(32px, 4vw, 44px);
+}
+
+.post {
+  --fill: var(--paper);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  transition: translate 0.2s ease, box-shadow 0.2s ease;
+}
+
+.post__panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: var(--tone-bg);
+}
+
+.post__body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: clamp(24px, 3.4vw, 34px) clamp(24px, 3.4vw, 36px) clamp(28px, 3.6vw, 36px);
+}
+
+.post h3 {
+  font-size: clamp(1.45rem, 1.2rem + 0.9vw, 1.75rem);
+  line-height: 1.15;
+}
+
+/* The title link covers the whole card, so the whole card is clickable */
+.post__link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.post__link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+}
+
+.post__link:focus-visible {
+  outline: none;
+}
+
+.post__link:focus-visible::after {
+  outline: 3px solid var(--ink);
+  outline-offset: 4px;
+}
+
+.post__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 24px;
+  margin-top: auto;
+  padding-top: 6px;
+}
+
+.post__actions .btn {
+  position: relative;
+  z-index: 3; /* above the title link, so this one goes to Amazon */
+}
+
+.read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.read-more .icon-arrow {
+  transition: translate 0.2s ease;
+}
+
+/* On hover the card lifts a little */
+@media (hover: hover) {
+  .post:hover {
+    translate: 0 -4px;
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .post:hover .read-more .icon-arrow {
+    translate: 5px 0;
+  }
+}
+
+.post__art {
+  display: block;
+  height: auto;
+}
+
+.post--card .post__panel {
+  height: 190px;
+}
+
+.post--card .post__art {
+  width: 150px;
+  height: 150px;
+}
+
+/* The big post at the top: picture on the left from tablets up */
+@media (min-width: 760px) {
+  .post--featured {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+  }
+
+  .post--featured .post__panel {
+    border-radius: var(--radius) 0 0 var(--radius);
+  }
+}
+
+.post--featured .post__panel {
+  padding: clamp(28px, 4vw, 40px) 24px;
+}
+
+.post--featured .post__art {
+  width: 100%;
+  max-width: 240px;
+}
+
+.post--featured .post__body {
+  justify-content: center;
+  gap: 14px;
+  padding: clamp(28px, 4vw, 44px) clamp(24px, 4vw, 40px);
+}
+
+.post--featured h3 {
+  font-size: clamp(1.7rem, 1.2rem + 1.8vw, 2.3rem);
+}
+
+/* The three crayons used as a post picture */
+.crayons {
+  position: relative;
+  width: 190px;
+  height: 130px;
+}
+
+.crayons span {
+  position: absolute;
+  width: 140px;
+  height: 26px;
+  border-radius: 6px 13px 13px 6px;
+}

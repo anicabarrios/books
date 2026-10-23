@@ -1,72 +1,30 @@
-import { useEffect, useState } from 'react'
-import { LogoIcon } from './Icons.jsx'
+import { LogoIcon, MenuIcon } from './Icons.jsx'
+import { NAV_LINKS, navHref } from '../data/nav.js'
+import { SITE } from '../data/site.js'
 
-const LINKS = [
-  { href: '#books', label: 'Books' },
-  { href: '#explore', label: 'Explore' },
-  { href: '#blog', label: 'Blog' },
-  { href: '#about', label: 'About' },
-]
-
-function MenuIcon({ open }) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path
-        d={open ? 'M6 6 L18 18 M18 6 L6 18' : 'M4 7 h16 M4 12 h16 M4 17 h16'}
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2.4"
-        strokeLinecap="round"
-      />
-    </svg>
-  )
-}
-
-// `base` is '' on the one-page home site and '/' on the separate blog pages (src/blog), where
-// the section links must point back to the home page and "Blog" to the blog list. The blog pages
-// are plain HTML, so the open/close logic below is repeated in src/blog-menu.js. Keep them alike.
-export default function Header({ base = '' }) {
-  // On small screens the links live in a menu that opens under the logo.
-  const [open, setOpen] = useState(false)
-  const close = () => setOpen(false)
-  const hrefFor = (href) => (base && href === '#blog' ? `${base}blog/` : `${base}${href}`)
-
-  useEffect(() => {
-    if (!open) return undefined
-    const onKey = (event) => {
-      if (event.key === 'Escape') setOpen(false)
-    }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [open])
-
+// No React state in here on purpose. The phone menu is opened and closed by src/menu.js, which
+// works the same on the home page and on the blog pages (those ship no React at all).
+export default function Header({ onHome = false }) {
   return (
     <header className="container site-header">
-      <a className="brand" href={base || '#top'} onClick={close}>
+      <a className="brand" href={onHome ? '#top' : '/'}>
         <span className="brand__mark">
           <LogoIcon />
         </span>
-        <span className="brand__name">Anica's Little Bookshelf</span>
+        <span className="brand__name">{SITE.name}</span>
       </a>
 
-      <button
-        type="button"
-        className="nav-toggle"
-        aria-expanded={open}
-        aria-controls="main-nav"
-        aria-label={open ? 'Close menu' : 'Open menu'}
-        onClick={() => setOpen((value) => !value)}
-      >
-        <MenuIcon open={open} />
+      <button type="button" className="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Menu">
+        <MenuIcon />
       </button>
 
-      <nav id="main-nav" className={`nav nav--main${open ? ' is-open' : ''}`} aria-label="Main">
-        {LINKS.map((link) => (
-          <a key={link.href} className="nav__link" href={hrefFor(link.href)} onClick={close}>
+      <nav id="main-nav" className="nav nav--main" aria-label="Main">
+        {NAV_LINKS.map((link) => (
+          <a key={link.id} className="nav__link" href={navHref(link.id, onHome)}>
             {link.label}
           </a>
         ))}
-        <a className="btn btn--primary btn--sm" href={hrefFor('#books')} onClick={close}>
+        <a className="btn btn--primary btn--sm" href={navHref('books', onHome)}>
           Shop the books
         </a>
       </nav>

@@ -1,0 +1,54 @@
+:root {
+  color-scheme: light;
+
+  /* ---------- Colors ---------- */
+  --ink: #26314f; /* outlines, headings */
+  --body: #36415f; /* paragraph text */
+  --muted: #4f5b7a; /* small print */
+  --sky: #f2f8ff; /* page background */
+  --paper: #ffffff;
+  --coral: #c93a30; /* the main button color: change it here */
+  --coral-soft: #ffe0dc;
+  --butter: #ffd76a;
+  --butter-soft: #fff1c7;
+  --sky-soft: #e4f2ff;
+  --leaf: #1f7a5c;
+  --leaf-soft: #d6f5e3;
+  --lilac: #e6deff;
+  --lilac-ink: #4b33a8;
+  --blush-wash: #fff4f1;
+
+  /* Blog card colors (a post's `tone:`) */
+  --mint: #cdefd9;
+  --mint-ink: #1f5a3c;
+  --blush: #ffd9d9;
+  --blush-ink: #8a2a2a;
+  --periwinkle: #d6e6ff;
+  --periwinkle-ink: #1f3c7a;
+
+  /* ---------- Type ---------- */
+  --font-display: 'Grandstander Variable', ui-rounded, 'Arial Rounded MT Bold', 'Trebuchet MS', system-ui, sans-serif;
+  --font-text: 'Nunito Variable', ui-rounded, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* ---------- Layout ---------- */
+  --gutter: clamp(16px, 4vw, 28px);
+  --container: 1120px;
+  --section-y: clamp(64px, 9vw, 104px);
+  --radius: clamp(24px, 3vw, 34px);
+
+  /* ---------- Soft edges instead of heavy outlines ----------
+     Cards are flat color with a soft shadow (.pop in motifs.css). The only lines left are thin
+     ones on small controls that need an edge to be seen (the ghost button, answer buttons). */
+  --stroke: 2px;
+  --line: rgb(38 49 79 / 0.3);
+  --line-strong: rgb(38 49 79 / 0.55);
+  --shadow-card: 0 18px 36px -22px rgb(38 49 79 / 0.4);
+  --shadow-card-hover: 0 24px 40px -22px rgb(38 49 79 / 0.5);
+  --coral-edge: #8e2a22; /* the flat edge under the red button */
+  --butter-edge: #e0a82e;
+
+  /* ---------- Little drawings used as masks (a mask takes the color of the element) ---------- */
+  --squiggle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 16'%3E%3Cpath d='M3 9 C10 2 16 2 22 8 S34 14 42 8 S54 2 62 8 S74 14 82 8 S90 4 93 6' fill='none' stroke='black' stroke-width='4.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  --wave: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 88 22' preserveAspectRatio='none'%3E%3Cpath d='M0 22 V13 Q11 1 22 13 T44 13 T66 13 T88 13 V22 Z'/%3E%3C/svg%3E");
+  --star: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2 l2.9 6.9 7.1 .6 -5.4 4.7 1.7 7 -6.3 -3.8 -6.3 3.8 1.7 -7 -5.4 -4.7 7.1 -.6 z'/%3E%3C/svg%3E");
+}

@@ -1,0 +1,160 @@
+/* ---------- The book cards ---------- */
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: clamp(32px, 4.5vw, 48px);
+}
+
+.book--sky {
+  --card: var(--sky-soft);
+}
+
+.book--butter {
+  --card: var(--butter-soft);
+}
+
+.book-card {
+  --fill: var(--card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  min-width: 0;
+  padding: clamp(34px, 4.5vw, 48px) clamp(22px, 3.6vw, 40px) clamp(30px, 4vw, 40px);
+}
+
+.book-card__stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.book-card__cover {
+  position: relative;
+  width: min(300px, 78%);
+  rotate: -1.5deg;
+}
+
+.book-card:nth-child(even) .book-card__cover {
+  rotate: 1.5deg;
+}
+
+.book-card__cover .cover {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 5px 12px 12px 5px;
+  box-shadow: 0 0 0 1px rgb(38 49 79 / 0.1), 0 18px 28px -14px rgb(38 49 79 / 0.55);
+  background: var(--paper);
+}
+
+.book-card__shelf {
+  width: 86%;
+  height: 16px;
+  margin-top: -4px;
+  border-radius: 8px;
+  background: #e2b27e;
+  box-shadow: 0 6px 0 #c99560;
+}
+
+.book-card__info {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  align-items: flex-start;
+  gap: 14px;
+  width: 100%;
+}
+
+.book-card__info h3 {
+  font-size: clamp(1.7rem, 1.3rem + 1.4vw, 2.1rem);
+}
+
+/* "Ideas to go with it": links to the blog posts about this book */
+.book-card__ideas {
+  width: 100%;
+  padding: 14px 18px 16px;
+  border-radius: 20px;
+  background: rgb(255 255 255 / 0.7);
+}
+
+.book-card__ideas h4 {
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.book-card__ideas ul {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.book-card__ideas li {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.book-card__ideas li::before {
+  content: '';
+  flex: none;
+  width: 14px;
+  height: 14px;
+  translate: 0 1px;
+  background: var(--coral);
+  -webkit-mask: var(--star) center / contain no-repeat;
+  mask: var(--star) center / contain no-repeat;
+}
+
+.book-card__ideas a {
+  font-weight: 700;
+  line-height: 1.35;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+/* Keeps the "Get it on Amazon" buttons level when the cards sit side by side */
+.book-card__info .btn {
+  margin-top: auto;
+}
+
+/* ---------- Cover that is drawn when there is no picture yet ---------- */
+.cover--placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  aspect-ratio: 1000 / 1293;
+  padding: 8% 7%;
+  border-radius: 10px 18px 18px 10px;
+  background: var(--butter);
+  box-shadow: inset 12px 0 0 rgb(38 49 79 / 0.14), 0 18px 28px -14px rgb(38 49 79 / 0.45);
+  text-align: center;
+}
+
+.cover--placeholder__kind {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.cover--placeholder__title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.8rem;
+  line-height: 1.05;
+  color: var(--ink);
+}
+
+.cover--placeholder__art {
+  width: 55%;
+  height: auto;
+}

@@ -72,6 +72,8 @@ export const HOLIDAYS = [
   },
 ]
 
+const DAY = 86_400_000
+
 // Every holiday with its next date counting from today, soonest first.
 export function getUpcomingHolidays(now = new Date()) {
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
@@ -79,7 +81,7 @@ export function getUpcomingHolidays(now = new Date()) {
   return HOLIDAYS.map((holiday) => {
     let nextDate = holiday.date(today.getFullYear())
     if (nextDate < today) nextDate = holiday.date(today.getFullYear() + 1)
-    const daysAway = Math.round((nextDate - today) / 86400000)
+    const daysAway = Math.round((nextDate - today) / DAY)
     return { ...holiday, nextDate, daysAway }
   }).sort((a, b) => a.nextDate - b.nextDate)
 }

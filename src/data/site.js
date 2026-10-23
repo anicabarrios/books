@@ -1,8 +1,8 @@
-// Site-wide settings for the blog pages. Read by scripts/build-blog.mjs (Node), not by the browser.
+// Site-wide settings. Read by the build scripts (Node) and by a few components (the site name).
 //
 // Put your real web address on the DEFAULT_URL line (no slash at the end), or set SITE_URL on
-// your host (Netlify, Vercel, Cloudflare Pages...). Canonical links, social previews and
-// sitemap.xml all use it, so it has to be right before you deploy.
+// your host (Netlify, Vercel, Cloudflare Pages...). Canonical links, social previews,
+// sitemap.xml and the RSS feed all use it, so it has to be right before you deploy.
 const DEFAULT_URL = 'https://example.com'
 
 const env = typeof process !== 'undefined' ? process.env : {}

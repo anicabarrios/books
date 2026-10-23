@@ -1,3 +1,5 @@
-node_modules
-dist
-.DS_Store
+node_modules/
+dist/
+
+# Rebuilt from content/blog/ every time (npm run blog). Change the Markdown, not these.
+blog/

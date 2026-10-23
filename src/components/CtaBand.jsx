@@ -1,19 +1,29 @@
+import { BOOKS } from '../data/content.js'
+import { everyBook } from '../lib/books.js'
 import AmazonLink from './AmazonLink.jsx'
-import { AMAZON } from '../data/content.js'
+import { StarIcon } from './Icons.jsx'
 
 export default function CtaBand() {
   return (
-    <section className="cta">
+    <section className="cta wave" aria-labelledby="cta-title">
+      <StarIcon className="cta__star cta__star--one" color="#FFD76A" />
+      <StarIcon className="cta__star cta__star--two" color="#FF8F7A" />
       <div className="cta__inner">
-        <h2>Ready to color?</h2>
-        <p>Both books are on Amazon, one click away.</p>
+        <h2 id="cta-title">Ready to color?</h2>
+        <p>
+          {everyBook(BOOKS.length)} {BOOKS.length === 1 ? 'is' : 'are'} on Amazon, one click away. Crayons sold separately.
+        </p>
         <div className="cta__actions">
-          <AmazonLink className="btn btn--butter btn--lg" href={AMAZON.cuteAnimals}>
-            Cute Animals &amp; Puppies
-          </AmazonLink>
-          <AmazonLink className="btn btn--light btn--lg" href={AMAZON.learnSerbian}>
-            Learn Serbian with Animals
-          </AmazonLink>
+          {BOOKS.map((book, index) => (
+            <AmazonLink
+              key={book.id}
+              className={`btn btn--lg ${index === 0 ? 'btn--butter' : 'btn--light'}`}
+              href={book.href}
+              srText=" on Amazon"
+            >
+              {book.title}
+            </AmazonLink>
+          ))}
         </div>
       </div>
     </section>

@@ -1,0 +1,212 @@
+/* ---------- Header ---------- */
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding-top: calc(18px + env(safe-area-inset-top));
+  padding-bottom: 18px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.brand__mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 15px;
+  background: var(--butter);
+  rotate: -4deg;
+}
+
+.brand__mark svg {
+  width: 32px;
+  height: 32px;
+}
+
+.brand__mark--sm {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+}
+
+.brand__mark--sm svg {
+  width: 26px;
+  height: 26px;
+}
+
+.brand__name {
+  font-family: var(--font-display);
+  font-weight: 760;
+  font-size: 1.35rem;
+  line-height: 1.1;
+}
+
+/* ---------- Navigation ---------- */
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 6px;
+}
+
+.nav__link {
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  color: var(--ink);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.nav .btn {
+  margin-left: 8px;
+}
+
+@media (hover: hover) {
+  .nav__link:hover {
+    background: var(--butter-soft);
+  }
+}
+
+/* The menu button is only shown on small screens, and only when JavaScript can work it
+   (the <html> tag gets the "js" class from a tiny script in the page head). Without JavaScript
+   the links simply stay visible under the logo. */
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: var(--stroke) solid var(--line-strong);
+  border-radius: 15px;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.nav-toggle svg {
+  width: 26px;
+  height: 26px;
+}
+
+.menu-icon__close,
+.nav-toggle[aria-expanded='true'] .menu-icon__open {
+  display: none;
+}
+
+.nav-toggle[aria-expanded='true'] .menu-icon__close {
+  display: inline;
+}
+
+@media (max-width: 860px) {
+  /* Zero basis: the logo shares the first row with the menu button instead of pushing it down */
+  .brand {
+    flex: 1 1 0;
+  }
+
+  .js .nav-toggle {
+    display: inline-flex;
+  }
+
+  .nav--main {
+    flex: 1 0 100%;
+    padding: 12px;
+    border-radius: 24px;
+    background: var(--paper);
+    box-shadow: var(--shadow-card);
+  }
+
+  .js .nav--main {
+    display: none;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 4px;
+  }
+
+  .js .nav--main.is-open {
+    display: flex;
+  }
+
+  .nav--main .nav__link {
+    padding: 12px 16px;
+    border-radius: 16px;
+  }
+
+  .nav--main .btn {
+    margin: 4px 0 0;
+  }
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  --bg: var(--paper);
+  padding: 44px 0 calc(40px + env(safe-area-inset-bottom));
+}
+
+.footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 32px;
+}
+
+.footer__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer__name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--ink);
+}
+
+.footer__copy {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.footer .nav__link {
+  padding: 0.5rem 0.85rem;
+}
+
+@media (max-width: 600px) {
+  .footer__inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer .nav {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-header {
+    column-gap: 12px;
+  }
+
+  .brand {
+    gap: 10px;
+  }
+
+  .brand__name {
+    font-size: 1.2rem;
+  }
+}

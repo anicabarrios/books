@@ -1,26 +1,15 @@
-import PostCard from './PostCard.jsx'
-// Written by scripts/build-blog.mjs from the Markdown files in content/blog/ (run: npm run blog)
-import POSTS from '../data/posts.generated.json'
+import PostList from './PostList.jsx'
+import SectionHead from './SectionHead.jsx'
 
-export default function Blog() {
-  const featured = POSTS.find((post) => post.featured) ?? POSTS[0]
-  const others = POSTS.filter((post) => post !== featured)
-
+// `posts` are the cards written by scripts/build-blog.mjs from content/blog/*.md (run: npm run blog)
+export default function Blog({ posts }) {
   return (
-    <section id="blog" className="section section--blush">
+    <section id="blog" className="section section--blush wave" aria-labelledby="blog-title">
       <div className="container">
-        <div className="section-head">
-          <span className="eyebrow">From the blog</span>
-          <h2>Coloring, learning and little adventures</h2>
-        </div>
-        <div className="blog-list">
-          {featured && <PostCard post={featured} />}
-          <div className="blog-row">
-            {others.map((post) => (
-              <PostCard key={post.id} post={post} />
-            ))}
-          </div>
-        </div>
+        <SectionHead id="blog-title" title="Coloring, learning and little adventures">
+          Easy ideas for the kitchen table, from holiday coloring to first words in Serbian.
+        </SectionHead>
+        <PostList posts={posts} />
         <div className="section-foot">
           <a className="btn btn--ghost" href="/blog/">
             All blog posts

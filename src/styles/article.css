@@ -1,0 +1,338 @@
+/* ---------- Blog pages: breadcrumbs, list page header, article ---------- */
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 4px 8px;
+  margin: 0;
+  padding: 4px 0 0;
+  list-style: none;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.breadcrumbs li {
+  flex: none;
+}
+
+.breadcrumbs li + li::before {
+  content: '›';
+  margin-right: 8px;
+}
+
+.breadcrumbs a {
+  color: var(--muted);
+}
+
+/* The long post title is cut with "..." so the trail stays on one line on phones */
+.breadcrumbs [aria-current='page'] {
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.blog-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: clamp(32px, 5vw, 56px) 0 clamp(52px, 7vw, 76px);
+  text-align: center;
+}
+
+.blog-hero h1 {
+  font-size: clamp(2.2rem, 1.4rem + 3.6vw, 3.6rem);
+  line-height: 1.08;
+}
+
+/* ---------- The article ---------- */
+.article {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 0 clamp(48px, 6vw, 72px);
+}
+
+.article__head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.article h1 {
+  font-size: clamp(2.1rem, 1.4rem + 3vw, 3.2rem);
+  line-height: 1.08;
+}
+
+.article__meta {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.article__meta a {
+  color: var(--muted);
+}
+
+.article__hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 28px 0;
+  padding: clamp(24px, 5vw, 40px);
+  border-radius: var(--radius);
+  background: var(--tone-bg);
+}
+
+.article__art {
+  display: block;
+  width: min(200px, 60%);
+  height: auto;
+}
+
+.toc {
+  margin-bottom: 36px;
+  padding: 20px 24px;
+  border-radius: 24px;
+  background: var(--paper);
+}
+
+.toc__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--ink);
+}
+
+.toc ul {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.toc a {
+  display: inline-block;
+  padding: 4px 0;
+  color: #2c46a8;
+}
+
+/* ---------- Article text ---------- */
+.prose {
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+  line-height: 1.75;
+}
+
+.prose > * + * {
+  margin-top: 1.1em;
+}
+
+.prose h2 {
+  margin-top: 2.2em;
+  font-size: clamp(1.7rem, 1.3rem + 1.6vw, 2.2rem);
+  line-height: 1.15;
+}
+
+.prose h2::after {
+  width: 72px;
+  margin-top: 10px;
+}
+
+.prose h3 {
+  margin-top: 1.7em;
+  font-size: clamp(1.3rem, 1.15rem + 0.8vw, 1.55rem);
+  line-height: 1.2;
+}
+
+.prose h2 + *,
+.prose h3 + * {
+  margin-top: 0.7em;
+}
+
+.prose a {
+  color: #2c46a8;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.3em;
+}
+
+.prose li + li {
+  margin-top: 0.5em;
+}
+
+.prose li::marker {
+  color: var(--coral);
+  font-weight: 800;
+}
+
+/* The safety notes */
+.prose blockquote {
+  margin-left: 0;
+  margin-right: 0;
+  padding: 16px 22px;
+  border-left: 6px solid var(--butter);
+  border-radius: 8px 20px 20px 8px;
+  background: var(--paper);
+}
+
+.prose blockquote p {
+  margin: 0;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border-radius: 20px;
+  background: var(--paper);
+}
+
+.prose table {
+  width: 100%;
+  min-width: 460px;
+  border-collapse: collapse;
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+.prose th,
+.prose td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e4eefc;
+  text-align: left;
+}
+
+.prose th {
+  background: var(--sky-soft);
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.prose tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* ---------- After the article ---------- */
+.author-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 44px;
+  padding: 20px 24px;
+  border-radius: 24px;
+  background: var(--paper);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.author-box a {
+  color: #2c46a8;
+}
+
+.author-box__avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--butter);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.7rem;
+  color: var(--ink);
+}
+
+.book-promo {
+  --fill: var(--card);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px 28px;
+  margin-top: 36px;
+  padding: clamp(24px, 4vw, 36px);
+}
+
+.book-promo__art {
+  flex: 0 0 120px;
+  max-width: 120px;
+}
+
+.book-promo__art .cover {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px 8px 8px 4px;
+  box-shadow: 0 0 0 1px rgb(38 49 79 / 0.1), 0 12px 20px -10px rgb(38 49 79 / 0.5);
+}
+
+.book-promo__body {
+  display: flex;
+  flex: 1 1 260px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 0;
+}
+
+.book-promo__lead {
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.book-promo__title {
+  font-family: var(--font-display);
+  font-weight: 750;
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 1.9rem);
+  line-height: 1.15;
+  color: var(--ink);
+}
+
+.related {
+  padding: 0 0 clamp(56px, 7vw, 88px);
+}
+
+.related h2 {
+  margin-bottom: 28px;
+  font-size: clamp(1.7rem, 1.3rem + 1.6vw, 2.2rem);
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  /* Let the vocabulary table fit a phone screen instead of scrolling sideways */
+  .prose table {
+    min-width: 0;
+    font-size: 0.95rem;
+  }
+
+  .prose th,
+  .prose td {
+    padding: 10px 6px;
+  }
+
+  .prose th:first-child,
+  .prose td:first-child {
+    padding-left: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .author-box {
+    align-items: flex-start;
+  }
+
+  .book-promo__art {
+    flex-basis: 96px;
+    max-width: 96px;
+  }
+}

@@ -1,0 +1,13 @@
+/* All the styles. Colors, fonts and sizes are the variables in tokens.css: change them there first. */
+@import './fonts.css';
+@import './tokens.css';
+@import './base.css';
+@import './motifs.css';
+@import './buttons.css';
+@import './header.css';
+@import './hero.css';
+@import './sections.css';
+@import './books.css';
+@import './discover.css';
+@import './posts.css';
+@import './article.css';

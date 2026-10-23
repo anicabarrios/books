@@ -1,0 +1,6 @@
+/* Fonts are part of the site (installed from npm), not loaded from Google. That means no extra
+   request to another company before the page can show text, which is faster and keeps visitors'
+   data private. Each file only downloads when the page really uses its letters (the Serbian
+   letters č ć š ž đ come from the "latin-ext" part). */
+@import '@fontsource-variable/grandstander/wght.css';
+@import '@fontsource-variable/nunito/wght.css';

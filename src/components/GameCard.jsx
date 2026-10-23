@@ -32,14 +32,15 @@ export default function GameCard({ gameId }) {
   }
 
   return (
-    <div className="word-card">
-      <span className="word-card__label">{round.label}</span>
+    <div className="word-card pop">
+      <p className="word-card__label">{round.label}</p>
       <p className="game__prompt">{round.prompt}</p>
       <div className="game__options">
         {round.options.map((option) => (
           <button
             key={option}
             type="button"
+            lang={round.optionLang}
             className={optionClass(option)}
             disabled={answered}
             onClick={() => choose(option)}
@@ -55,13 +56,14 @@ export default function GameCard({ gameId }) {
         type="button"
         className="btn btn--primary btn--sm"
         style={{ visibility: answered ? 'visible' : 'hidden' }}
+        tabIndex={answered ? 0 : -1}
         onClick={next}
       >
-        Next
+        Next one
       </button>
-      <span className="game__score">
+      <p className="game__score">
         Score: {score.correct} of {score.played}
-      </span>
+      </p>
     </div>
   )
 }
