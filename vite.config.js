@@ -9,11 +9,12 @@ import { loadRenderer } from './scripts/lib/renderer.mjs'
 
 const root = path.dirname(fileURLToPath(import.meta.url))
 
-// The one-page site (index.html) plus the blog pages in blog/, which scripts/build-blog.mjs
-// generates from content/blog/*.md (it runs before `npm run dev` and `npm run build`).
+// The one-page site (index.html), the 404 page and the blog pages in blog/, which
+// scripts/build-blog.mjs generates from content/blog/*.md (it runs before `npm run dev` and `npm run build`).
 // Every blog page is its own HTML entry, so it is built as a real, separate page.
 function pages() {
   const input = { main: path.join(root, 'index.html') }
+  if (existsSync(path.join(root, '404.html'))) input.notFound = path.join(root, '404.html')
   const blogDir = path.join(root, 'blog')
 
   if (existsSync(path.join(blogDir, 'index.html'))) {

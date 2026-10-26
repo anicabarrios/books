@@ -1,17 +1,24 @@
 // Site-wide settings. Read by the build scripts (Node) and by a few components (the site name).
 //
-// Put your real web address on the DEFAULT_URL line (no slash at the end), or set SITE_URL on
-// your host (Netlify, Vercel, Cloudflare Pages...). Canonical links, social previews,
-// sitemap.xml and the RSS feed all use it, so it has to be right before you deploy.
+// The web address is picked in this order:
+//   1. SITE_URL, if you set it (on your host or in the terminal)
+//   2. On Netlify: the site's main address, which Netlify fills in by itself. It is your custom
+//      domain once you add one, and your-site.netlify.app until then.
+//   3. DEFAULT_URL below. Put your real address there (no slash at the end) if you deploy
+//      somewhere else. Canonical links, social previews, sitemap.xml and the RSS feed all use it.
 const DEFAULT_URL = 'https://example.com'
 
 const env = typeof process !== 'undefined' ? process.env : {}
-const url = (env.SITE_URL || DEFAULT_URL).replace(/\/+$/, '')
+const onNetlify = env.NETLIFY === 'true'
+const url = (env.SITE_URL || (onNetlify && env.URL) || DEFAULT_URL).replace(/\/+$/, '')
 
 export const SITE = {
   name: "Anica's Little Bookshelf",
   url,
   urlIsPlaceholder: url === 'https://example.com',
+  // Netlify deploy previews and branch deploys are test copies of the site: they get "noindex" so
+  // Google does not list them next to the real one.
+  indexable: !onNetlify || env.CONTEXT === 'production',
   author: 'Anica Barrios',
   language: 'en-US',
   locale: 'en_US',

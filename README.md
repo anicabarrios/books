@@ -17,26 +17,44 @@ Other commands:
 | --- | --- |
 | `npm run build` | Makes the finished site in `dist/` (upload that folder to your host) |
 | `npm run preview` | Shows `dist/` locally, to check the finished site |
-| `npm run covers` | Makes small WebP copies of every cover in `public/covers/` |
+| `npm run covers` | Makes small WebP copies of every cover in `public/covers/` (dev and build run it by themselves and skip copies that are up to date) |
 | `npm run blog` | Builds only the blog pages, sitemap, robots.txt and RSS feed (build and dev already run it) |
 
 Node 20 or newer.
 
-## Before you deploy: set your web address
+## Deploy on Netlify
 
-Canonical links, social previews, the sitemap and the RSS feed all need your real domain. The build stops with a clear message while the placeholder `https://example.com` is still in place.
+The project is ready for it: `netlify.toml` holds the build command, the Node version, caching and safety headers, so there is nothing to fill in on the Netlify side.
 
-Two ways to set it, pick one:
+1. Put the project on GitHub (the `.gitignore` already leaves out `node_modules`, `dist` and the generated files).
+2. In Netlify: **Add new site, Import an existing project**, pick the repository, and click **Deploy**. Netlify reads `netlify.toml` by itself.
+3. Open the site address Netlify gives you and click through the pages.
+4. Your own domain: **Domain management, Add a domain**, then set it as the primary domain.
+5. Then **Deploys, Trigger deploy, Clear cache and deploy site**. The canonical links, the sitemap and the RSS feed are written at build time with the site's main address, so they need one new build after the domain changes.
+6. In Google Search Console, add the site and submit `https://yourdomain.com/sitemap.xml`.
+
+What happens by itself on Netlify:
+
+- The site address comes from Netlify (`URL`), so you do not set anything. It is `your-site.netlify.app` first and your own domain once it is the primary one.
+- Deploy previews and branch deploys get `noindex`, so Google does not list test copies next to the real site.
+- Missing addresses show the friendly `404.html` page.
+- New covers are turned into small WebP files during the build, so you only commit the JPG.
+
+Dragging the `dist` folder onto Netlify also works, but then the address has to be set by hand: build with `SITE_URL=https://yourdomain.com npm run build`, then upload `dist`.
+
+### Other hosts
+
+Set the address in one of two ways:
 
 - Edit `DEFAULT_URL` at the top of `src/data/site.js` (no slash at the end), or
-- Set `SITE_URL` on your host, for example `SITE_URL=https://yourdomain.com` in Netlify, Vercel or Cloudflare Pages.
+- Set `SITE_URL` on your host, for example `SITE_URL=https://yourdomain.com`.
 
-For a local test build with the placeholder, run `SITE_URL=http://localhost:4173 npm run build`.
+The build stops with a clear message while the placeholder `https://example.com` is still in place. For a local test build, run `SITE_URL=http://localhost:4173 npm run build`.
 
 ## Add a book
 
 1. Put the cover JPG in `public/covers/`, for example `public/covers/my_book.jpg`.
-2. Run `npm run covers`. It makes the small WebP versions and prints the line to paste in the next step.
+2. Run `npm run covers`. It makes the small WebP versions and prints the line to paste in the next step. (The build does this by itself too, so a cover can never go live without them.)
 3. Add the Amazon link to `AMAZON` and one object to `BOOKS` in `src/data/content.js`. Copy an existing one, the comments in the file explain each field.
 
 The hero shelf, the book cards, the buttons at the bottom, the structured data for Google and the "Ideas to go with it" links all update on their own.
@@ -70,17 +88,19 @@ Link to another post with a normal path, like `[text](/blog/other-post-slug/)`, 
 
 ```
 content/blog/        the posts, one Markdown file each
+netlify.toml         Netlify settings: build command, Node version, caching, safety headers
 public/              files copied as they are: covers, og pictures, favicon, sitemap...
 scripts/             build steps (blog pages, sitemap, covers); scripts/lib has the small helpers
 src/data/            the text and data: site.js, content.js (books), holidays.js, games.js, nav.js
 src/components/      the React pieces of the home page
 src/blog/            the article and blog list pages
+src/pages/           the 404 page
 src/styles/          the CSS, one file per area; tokens.css has the colors and sizes
 src/render.jsx       what the build uses to turn React into HTML
 src/menu.js          the phone menu (the same script on the home page and the blog pages)
 ```
 
-`blog/` and `src/data/posts.generated.json` are made by the build. Don't edit them by hand.
+`blog/`, `404.html` and `src/data/posts.generated.json` are made by the build. Don't edit them by hand.
 
 ## Change the look
 
@@ -90,4 +110,4 @@ Colors, fonts, spacing, line colors and shadows are variables at the top of `src
 
 - The copy about holidays and Serbian words (`src/data/holidays.js`, `WORDS` in `src/data/content.js`, the posts). Read it once and fix anything you would say differently.
 - Amazon links in `AMAZON` (`src/data/content.js`).
-- Your domain (see above).
+- Your own domain, once you have one (step 4 under Deploy on Netlify).

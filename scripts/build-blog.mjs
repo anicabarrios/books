@@ -77,7 +77,7 @@ const defaultImage = absoluteUrl('/og/default.png')
 
 // ---------- render with the site's React components ----------
 
-const { renderArticle, renderBlogIndex } = await loadRenderer()
+const { renderArticle, renderBlogIndex, renderNotFound } = await loadRenderer()
 
 const cards = posts.map((post) => ({
   id: post.slug,
@@ -202,6 +202,17 @@ for (const post of posts) {
   const descriptionLength = lengthOf(SITE.blog.description)
   if (titleLength > 60) report.warn(`src/data/site.js: blog seoTitle is ${titleLength} characters (aim for 60 or less)`)
   if (descriptionLength > 160) report.warn(`src/data/site.js: blog description is ${descriptionLength} characters (aim for 160 or less)`)
+}
+
+// The 404 page, written to the project root as 404.html (vite.config.js builds it like the others).
+// It is kept out of Google and out of the sitemap.
+{
+  const head = headTags({
+    title: `Page not found | ${SITE.name}`,
+    description: 'This page could not be found. Go back to the books or read the blog.',
+    robots: 'noindex, follow',
+  })
+  writeFileSync(at('404.html'), pageHtml({ head, body: renderNotFound() }))
 }
 
 // ---------- sitemap, robots, feed, post list for the home page ----------
