@@ -1,5 +1,5 @@
 :root {
-  color-scheme: light;
+  color-scheme: only light; /* "only" keeps phone browsers (Samsung Internet, Chrome) from darkening the site by themselves */
 
   /* ---------- Colors ---------- */
   --ink: #26314f; /* outlines, headings */
