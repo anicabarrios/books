@@ -64,9 +64,9 @@ export function headTags({ title, ogTitle = title, description, path, image, ima
     `<meta name="description" content="${esc(description)}" />`,
     canonical && `<link rel="canonical" href="${esc(canonical)}" />`,
     `<meta name="robots" content="${robotsContent}" />`,
-    // Says the page handles dark mode itself (by looking the same, see tokens.css), so phone
-    // browsers do not force a dark version of it.
-    `<meta name="color-scheme" content="light dark" />`,
+    // The site is light only. Chrome will not force a dark version of it. (Samsung Internet's own
+    // "website dark theme" setting cannot be switched off from the site.)
+    `<meta name="color-scheme" content="only light" />`,
     `<meta name="author" content="${esc(SITE.author)}" />`,
     `<meta name="theme-color" content="${SITE.themeColor}" />`,
     `<link rel="icon" type="image/svg+xml" href="/favicon.svg" />`,

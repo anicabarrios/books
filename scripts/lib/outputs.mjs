@@ -17,7 +17,23 @@ export function sitemapXml(posts) {
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries}\n</urlset>\n`
 }
 
-export const robotsTxt = () => `User-agent: *\nAllow: /\n\nSitemap: ${absoluteUrl('/sitemap.xml')}\n`
+// What each AI crawler is for (from OpenAI's and Anthropic's own pages):
+//   OAI-SearchBot, Claude-SearchBot   find pages for ChatGPT and Claude search results
+//   ChatGPT-User, Claude-User         open a page when a person asks about it in a chat
+//   GPTBot, ClaudeBot                 collect pages that may be used to train new models
+// All other crawlers follow the "*" rule.
+const AI_SEARCH_BOTS = ['OAI-SearchBot', 'ChatGPT-User', 'Claude-SearchBot', 'Claude-User']
+const AI_TRAINING_BOTS = ['GPTBot', 'ClaudeBot']
+
+const group = (bots, rule) => `${bots.map((bot) => `User-agent: ${bot}`).join('\n')}\n${rule}`
+
+export const robotsTxt = () =>
+  [
+    group(['*'], 'Allow: /'),
+    `# AI search and assistants: allowed, so your pages can be found and linked in answers\n${group(AI_SEARCH_BOTS, 'Allow: /')}`,
+    `# AI training: change allowAiTraining in src/data/site.js\n${group(AI_TRAINING_BOTS, SITE.allowAiTraining ? 'Allow: /' : 'Disallow: /')}`,
+    `Sitemap: ${absoluteUrl('/sitemap.xml')}`,
+  ].join('\n\n') + '\n'
 
 // RSS 2.0, newest post first. Readers and some search tools use it to notice new posts quickly.
 export function feedXml(posts) {

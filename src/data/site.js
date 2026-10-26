@@ -20,6 +20,14 @@ export const SITE = {
   // Google does not list them next to the real one.
   indexable: !onNetlify || env.CONTEXT === 'production',
   author: 'Anica Barrios',
+  // Links to your other pages that are really you: Amazon Author Central page, Pinterest,
+  // Instagram, Facebook page... Put the full addresses in this list. They go into the structured
+  // data, which helps search engines and AI assistants see that these pages are the same author.
+  sameAs: [],
+  // robots.txt: AI assistants and AI search (ChatGPT search, Claude search) are always allowed, so
+  // they can find your pages and link to them in answers. This setting is only for AI TRAINING
+  // (GPTBot, ClaudeBot): true lets them use your pages to train new models, false asks them not to.
+  allowAiTraining: true,
   language: 'en-US',
   locale: 'en_US',
   themeColor: '#f2f8ff',

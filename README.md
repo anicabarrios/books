@@ -81,6 +81,7 @@ Link to another post with a normal path, like `[text](/blog/other-post-slug/)`, 
 - Unique title, description, canonical link, Open Graph and Twitter tags on every page.
 - Structured data (JSON-LD): website, publisher and author, the book list (`CollectionPage` + `Book`), `Blog`, `BlogPosting`, breadcrumbs.
 - `sitemap.xml`, `robots.txt` and an RSS feed (`feed.xml`), all written by the build.
+- `robots.txt` names the AI crawlers: the ChatGPT and Claude search and assistant bots (`OAI-SearchBot`, `ChatGPT-User`, `Claude-SearchBot`, `Claude-User`) are allowed, so your pages can be found and linked in answers. There is no meta tag that makes an AI assistant find a site; being crawlable and having clear, original content is what counts. Whether AI companies may also use your pages to train models (`GPTBot`, `ClaudeBot`) is the `allowAiTraining` setting in `src/data/site.js`.
 - Fast loading: fonts served from the site itself, covers as small WebP files with sizes set, only the first covers load eagerly.
 - Links to other sites open in a new tab with `rel="noopener noreferrer"`. Amazon links that carry an affiliate `tag=` also get `sponsored`, which is what Google asks for. Screen readers hear which book the button is for and that it opens in a new tab.
 
@@ -110,4 +111,5 @@ Colors, fonts, spacing, line colors and shadows are variables at the top of `src
 
 - The copy about holidays and Serbian words (`src/data/holidays.js`, `WORDS` in `src/data/content.js`, the posts). Read it once and fix anything you would say differently.
 - Amazon links in `AMAZON` (`src/data/content.js`).
+- `sameAs` in `src/data/site.js`: add the full addresses of your Amazon Author Central page and your social profiles, so search engines and AI assistants can tell they are the same author as the site.
 - Your own domain, once you have one (step 4 under Deploy on Netlify).

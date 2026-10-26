@@ -16,6 +16,7 @@ export const authorEntity = () => ({
   '@id': ids.author,
   name: SITE.author,
   url: absoluteUrl('/#about'),
+  ...(SITE.sameAs.length > 0 && { sameAs: SITE.sameAs }),
 })
 
 export const publisherEntity = () => ({
@@ -25,6 +26,7 @@ export const publisherEntity = () => ({
   url: absoluteUrl('/'),
   logo: { '@type': 'ImageObject', url: absoluteUrl('/logo-512.png'), width: 512, height: 512 },
   founder: { '@id': ids.author },
+  ...(SITE.sameAs.length > 0 && { sameAs: SITE.sameAs }),
 })
 
 export const breadcrumbList = (trail) => ({

@@ -1,8 +1,7 @@
 :root {
-  /* The site is light on purpose, in dark mode too. "light dark" tells the browser that the page
-     handles dark mode by itself, so phone browsers (Samsung Internet, Chrome) should not darken it
-     on their own. The block at the end of this file makes dark mode look exactly like light. */
-  color-scheme: light dark;
+  /* The site is light on purpose. "only light" stops Chrome from darkening it by itself.
+     (Samsung Internet's own "website dark theme" cannot be switched off from the site.) */
+  color-scheme: only light;
 
   /* ---------- Colors ---------- */
   --ink: #26314f; /* outlines, headings */
@@ -54,18 +53,4 @@
   --squiggle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 16'%3E%3Cpath d='M3 9 C10 2 16 2 22 8 S34 14 42 8 S54 2 62 8 S74 14 82 8 S90 4 93 6' fill='none' stroke='black' stroke-width='4.5' stroke-linecap='round'/%3E%3C/svg%3E");
   --wave: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 88 22' preserveAspectRatio='none'%3E%3Cpath d='M0 22 V13 Q11 1 22 13 T44 13 T66 13 T88 13 V22 Z'/%3E%3C/svg%3E");
   --star: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2 l2.9 6.9 7.1 .6 -5.4 4.7 1.7 7 -6.3 -3.8 -6.3 3.8 1.7 -7 -5.4 -4.7 7.1 -.6 z'/%3E%3C/svg%3E");
-}
-
-/* ---------- Dark mode: looks the same as light ----------
-   Having a rule for dark mode is what tells phone browsers that this page is "dark mode ready",
-   so they leave its colors alone. Everything on the site is colored by the variables above, so
-   the only thing left is the browser's own parts (scroll areas, form controls): keep those light. */
-@media (prefers-color-scheme: dark) {
-  html {
-    background: var(--sky);
-  }
-
-  body {
-    color-scheme: light;
-  }
 }
