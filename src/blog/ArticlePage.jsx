@@ -4,6 +4,7 @@ import PostCard from '../components/PostCard.jsx'
 import { CHARACTERS } from '../components/Characters.jsx'
 import BookPromo from './BookPromo.jsx'
 import Breadcrumbs from './Breadcrumbs.jsx'
+import PinNote from './PinNote.jsx'
 
 const formatDate = (iso) =>
   new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-US', {
@@ -70,6 +71,8 @@ export default function ArticlePage({ post, related, book, books, site }) {
           )}
 
           <div className="prose" dangerouslySetInnerHTML={{ __html: post.bodyHtml }} />
+
+          {post.pin && <PinNote href={post.pin} pinId={post.pinId} title={post.title} />}
 
           <aside className="author-box" aria-label="About the author">
             <span className="author-box__avatar" aria-hidden="true">

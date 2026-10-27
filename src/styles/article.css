@@ -252,6 +252,38 @@
   color: var(--ink);
 }
 
+.pin-note {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 20px;
+  margin-top: 36px;
+  padding: 18px 24px;
+  border-radius: 24px;
+  background: var(--paper);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.pin-note__embed {
+  display: flex;
+  flex: 0 0 100%;
+  justify-content: center;
+}
+
+.pin-note__embed iframe {
+  max-width: 100%;
+  border: 0;
+  border-radius: 16px;
+}
+
+.pin-note__text {
+  flex: 1 1 240px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
 .book-promo {
   --fill: var(--card);
   display: flex;

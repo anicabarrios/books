@@ -12,6 +12,7 @@ excerpt: "What coloring really does for little kids, plus five simple ideas to t
 imageAlt: "A smiling cartoon puppy, one of the friendly animals kids can color"
 book: cute-animals
 keyword: why coloring is good for preschoolers
+pin: https://www.pinterest.com/pin/931893347920317703/
 keywords:
   - why coloring is good for preschoolers
   - benefits of coloring for kids

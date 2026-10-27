@@ -68,6 +68,7 @@ Add a Markdown file to `content/blog/`, for example `content/blog/my-new-post.md
 - `tag`, `tone` (`mint`, `blush` or `blue`), `art` (`puppy`, `bear` or `pumpkin`), `imageAlt`
 - `book`: the `id` of the book to promote under the post
 - `keyword`: the one phrase the post should rank for
+- `pin` (optional): the Pinterest pin that promotes the post, like `https://www.pinterest.com/pin/1234567890/`. It adds the embedded pin and a "Save on Pinterest" button after the text. A `pin.it` short link gives the button only, without the embed.
 
 When you build, the terminal prints "SEO notes": short warnings if a title is too long, the keyword is missing from the first 100 words, and so on. Fix them if you want, the build still works. Mistakes that would break a page (missing fields, unknown book, broken link to another post) stop the build with a clear message.
 

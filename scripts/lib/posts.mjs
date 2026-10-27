@@ -55,6 +55,12 @@ export function readPosts({ books, report }) {
     const updated = data.updated ? isoDate(data.updated, 'updated', file, report) : date
     const hasOwnImage = existsSync(at('public', 'og', `${slug}.png`))
 
+    // Optional: the Pinterest pin that promotes this post. A pin.it or pinterest.com address.
+    const pin = data.pin ? String(data.pin).trim() : ''
+    if (pin && !/^https:\/\/(pin\.it|([a-z]+\.)?pinterest\.[a-z.]+)\//i.test(pin)) {
+      report.error(`${file}: "pin" must be a https://pin.it/... or https://www.pinterest.com/pin/... address (got "${pin}")`)
+    }
+
     return {
       file,
       slug,
@@ -68,6 +74,8 @@ export function readPosts({ books, report }) {
       tone: data.tone,
       art: data.art,
       imageAlt: String(data.imageAlt ?? ''),
+      pin,
+      pinId: pin.match(/pinterest\.[a-z.]+\/pin\/(\d+)/i)?.[1] ?? '',
       image: `${SITE.url}/og/${hasOwnImage ? slug : 'default'}.png`,
       featured: Boolean(data.featured),
       keyword: data.keyword ? String(data.keyword) : '',
