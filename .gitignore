@@ -6,5 +6,5 @@ dist/
 *.log
 
 # Rebuilt from content/blog/ every time (npm run blog). Change the Markdown, not these.
-blog/
-404.html
+/blog/
+/404.html
