@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://example.com/</loc>
+    <loc>https://www.anicasbookshelf.com/</loc>
+    <lastmod>2026-10-27</lastmod>
+  </url>
+  <url>
+    <loc>https://www.anicasbookshelf.com/blog/</loc>
+    <lastmod>2026-10-27</lastmod>
+  </url>
+  <url>
+    <loc>https://www.anicasbookshelf.com/blog/why-coloring-is-good-for-preschoolers/</loc>
+    <lastmod>2026-10-27</lastmod>
+  </url>
+  <url>
+    <loc>https://www.anicasbookshelf.com/blog/thanksgiving-activities-for-toddlers/</loc>
     <lastmod>2026-10-21</lastmod>
   </url>
   <url>
-    <loc>https://example.com/blog/</loc>
+    <loc>https://www.anicasbookshelf.com/blog/halloween-coloring-ideas-for-kids/</loc>
     <lastmod>2026-10-21</lastmod>
   </url>
   <url>
-    <loc>https://example.com/blog/thanksgiving-activities-for-toddlers/</loc>
-    <lastmod>2026-10-21</lastmod>
-  </url>
-  <url>
-    <loc>https://example.com/blog/halloween-coloring-ideas-for-kids/</loc>
-    <lastmod>2026-10-21</lastmod>
-  </url>
-  <url>
-    <loc>https://example.com/blog/learn-serbian-for-kids/</loc>
+    <loc>https://www.anicasbookshelf.com/blog/learn-serbian-for-kids/</loc>
     <lastmod>2026-10-21</lastmod>
   </url>
 </urlset>

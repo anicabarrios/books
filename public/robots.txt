@@ -13,4 +13,4 @@ User-agent: GPTBot
 User-agent: ClaudeBot
 Allow: /
 
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://www.anicasbookshelf.com/sitemap.xml

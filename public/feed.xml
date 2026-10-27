@@ -2,31 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Anica's Little Bookshelf blog</title>
-    <link>https://example.com/blog/</link>
+    <link>https://www.anicasbookshelf.com/blog/</link>
     <description>Coloring ideas, holiday activities and easy ways to learn Serbian through animals for kids ages 3 to 7, from the author of Cute Animals &amp; Puppies.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 21 Oct 2026 00:00:00 GMT</lastBuildDate>
-    <atom:link href="https://example.com/feed.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 27 Oct 2026 00:00:00 GMT</lastBuildDate>
+    <atom:link href="https://www.anicasbookshelf.com/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why Coloring Is Good for Preschoolers (and 5 Easy Ways to Make It Fun)</title>
+      <link>https://www.anicasbookshelf.com/blog/why-coloring-is-good-for-preschoolers/</link>
+      <guid isPermaLink="true">https://www.anicasbookshelf.com/blog/why-coloring-is-good-for-preschoolers/</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Coloring Tips</category>
+      <description>What coloring really does for little kids, plus five simple ideas to turn coloring time into a favorite part of the day.</description>
+    </item>
     <item>
       <title>8 Easy Thanksgiving Activities for Toddlers &amp; Preschoolers</title>
-      <link>https://example.com/blog/thanksgiving-activities-for-toddlers/</link>
-      <guid isPermaLink="true">https://example.com/blog/thanksgiving-activities-for-toddlers/</guid>
+      <link>https://www.anicasbookshelf.com/blog/thanksgiving-activities-for-toddlers/</link>
+      <guid isPermaLink="true">https://www.anicasbookshelf.com/blog/thanksgiving-activities-for-toddlers/</guid>
       <pubDate>Wed, 21 Oct 2026 00:00:00 GMT</pubDate>
       <category>Holidays</category>
       <description>Coloring place cards, a thankful jar and little table jobs: eight simple ways to bring toddlers and preschoolers into the holiday.</description>
     </item>
     <item>
       <title>Friendly Halloween Coloring Ideas for Kids Ages 3 to 6</title>
-      <link>https://example.com/blog/halloween-coloring-ideas-for-kids/</link>
-      <guid isPermaLink="true">https://example.com/blog/halloween-coloring-ideas-for-kids/</guid>
+      <link>https://www.anicasbookshelf.com/blog/halloween-coloring-ideas-for-kids/</link>
+      <guid isPermaLink="true">https://www.anicasbookshelf.com/blog/halloween-coloring-ideas-for-kids/</guid>
       <pubDate>Wed, 21 Oct 2026 00:00:00 GMT</pubDate>
       <category>Halloween</category>
       <description>Pumpkins, costumes and puppy ghosts: gentle, not-too-spooky ways to celebrate with crayons.</description>
     </item>
     <item>
       <title>Learn Serbian for Kids: Why Animals Make the Best First Words</title>
-      <link>https://example.com/blog/learn-serbian-for-kids/</link>
-      <guid isPermaLink="true">https://example.com/blog/learn-serbian-for-kids/</guid>
+      <link>https://www.anicasbookshelf.com/blog/learn-serbian-for-kids/</link>
+      <guid isPermaLink="true">https://www.anicasbookshelf.com/blog/learn-serbian-for-kids/</guid>
       <pubDate>Wed, 21 Oct 2026 00:00:00 GMT</pubDate>
       <category>Learning Serbian</category>
       <description>Animals make the friendliest first words. Here is how a crayon, a picture and one new word a day can turn Serbian into a game.</description>
